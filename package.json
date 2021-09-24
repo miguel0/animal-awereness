@@ -1,0 +1,19 @@
+{
+  "name": "animal-awereness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguel0/animal-awereness.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miguel0/animal-awereness/issues"
+  },
+  "homepage": "https://github.com/miguel0/animal-awereness#readme"
+}
