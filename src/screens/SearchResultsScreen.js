@@ -44,7 +44,7 @@ export default class SearchResultsScreen extends React.Component {
     }
 
     const results = resultsArray.map((item) =>
-      <ListGroup.Item key={item} onClick={this.goToResult.bind(this, item)}>
+      <ListGroup.Item className="relatedItem" key={item} onClick={this.goToResult.bind(this, item)}>
         {item}</ListGroup.Item>
     );
     this.setState({results: results})

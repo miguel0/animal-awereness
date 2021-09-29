@@ -7,7 +7,7 @@ function goToRelatedItem(type, name) {
 
 function Related(props) {
   const listItems = props.related.map((item) =>
-    <ListGroup.Item key={item} onClick={goToRelatedItem.bind(this, props.type, item)}>
+    <ListGroup.Item className="relatedItem" key={item} onClick={goToRelatedItem.bind(this, props.type, item)}>
       {item}</ListGroup.Item>
   );
 
