@@ -1,3 +1,4 @@
+import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import SearchScreen from './screens/SearchScreen';
@@ -5,7 +6,8 @@ import AnimalScreen from './screens/AnimalScreen';
 
 function App() {
   return (
-    <div>
+    <div id="app">
+      <h1 id="title">Animal Awareness</h1>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
