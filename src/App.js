@@ -1,12 +1,21 @@
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Related from './components/related';
+import SearchScreen from './screens/SearchScreen';
+import AnimalScreen from './screens/AnimalScreen';
 
 function App() {
   return (
-    <div className="App">
-      <br></br>
-      <Related type={"test"} related={[1,2,3,4,5]} />
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <SearchScreen />
+          </Route>
+          <Route exact path="/animal">
+            <AnimalScreen />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
