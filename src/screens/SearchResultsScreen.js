@@ -1,6 +1,7 @@
 import React from 'react';
 import './SearchResultsScreen.css';
 import { ListGroup } from "react-bootstrap";
+
 const queryString = require('query-string');
 
 export default class SearchResultsScreen extends React.Component {
