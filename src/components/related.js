@@ -2,8 +2,7 @@ import './related.css';
 import { ListGroup } from "react-bootstrap";
 
 function goToRelatedItem(type, name) {
-  // TODO: go to page of related item
-  console.log('type: ', type, ' name: ', name);
+  window.location.href = '/details?type=' + type + '&name=' + name;
 }
 
 function Related(props) {
@@ -12,9 +11,11 @@ function Related(props) {
       {item}</ListGroup.Item>
   );
 
+  const type = ['Animals', 'Threats', 'Habitats', 'Countries'];
+
   return (
     <div id="main">
-      <h3>Related {props.type}:</h3>
+      <h3>Related {type[props.type]}:</h3>
       <ListGroup id="related">{listItems}</ListGroup>
     </div>
   );

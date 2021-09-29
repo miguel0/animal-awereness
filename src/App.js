@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import SearchScreen from './screens/SearchScreen';
 import SearchResultsScreen from './screens/SearchResultsScreen'; 
-import AnimalScreen from './screens/AnimalScreen';
+import DetailsScreen from './screens/DetailsScreen';
 
 function goToSearch() {
   window.location.href = '/';
@@ -21,8 +21,8 @@ function App() {
           <Route exact path="/results">
             <SearchResultsScreen />
           </Route>
-          <Route exact path="/animal">
-            <AnimalScreen />
+          <Route exact path="/details">
+            <DetailsScreen />
           </Route>
         </Switch>
       </BrowserRouter>

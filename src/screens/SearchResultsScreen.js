@@ -50,8 +50,7 @@ export default class SearchResultsScreen extends React.Component {
   }
 
   goToResult(name) {
-    // TODO: go to page of result
-    console.log('type: ', this.state.type, ' name: ', name);
+    window.location.href = '/details?type=' + this.state.type + '&name=' + name;
   }
 
   render() {
