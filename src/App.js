@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import SearchScreen from './screens/SearchScreen';
+import SearchResultsScreen from './screens/SearchResultsScreen'; 
 import AnimalScreen from './screens/AnimalScreen';
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <SearchScreen />
+          </Route>
+          <Route exact path="/results">
+            <SearchResultsScreen />
           </Route>
           <Route exact path="/animal">
             <AnimalScreen />

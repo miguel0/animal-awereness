@@ -23,7 +23,7 @@ export default class SearchScreen extends React.Component {
   search() {
     let type = this.state.type;
     let text = document.getElementById('searchInput').value
-    console.log(type, text);
+    window.location.href = '/results?type=' + type + '&text=' + text;
   }
 
   render() {
