@@ -2,8 +2,9 @@ import './details.css';
 import Related from './related';
 import { Image, Form } from 'react-bootstrap';
 
-function getDetails(name) {
-  // TODO: get details from API
+function getDetails(details) {
+  console.log(details);
+  
   return {
     name: "Azerbaijan",
     flag: "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/azerbaijan-flag-13.png",
@@ -38,7 +39,7 @@ function getDetails(name) {
 }
 
 function Animal(props) {
-  const details = getDetails(props.name);
+  const details = getDetails(props.details);
 
   return (
     <div id="main">

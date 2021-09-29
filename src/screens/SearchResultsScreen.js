@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchResultsScreen.css';
+import axios from 'axios';
 import { ListGroup } from "react-bootstrap";
 
 const queryString = require('query-string');
@@ -31,23 +32,32 @@ export default class SearchResultsScreen extends React.Component {
   getResults() {
     // TODO: get list of items from API
     console.log(this.state.type, this.state.text);
-    let allItems = ['t e s t', 'testito', 'PRUEBA', 'prueb i t o'];
+    
+    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+      .then(res => {
+        console.log(res.data);
 
-    let resultsArray = [];
-    for(let i = 0; i < allItems.length; i++) {
-      let newResult = allItems[i].toLowerCase().replace(/\s+/g, '');
-      let newText = this.state.text.toLowerCase().replace(/\s+/g, '');
+        let allItems = ['t e s t', 'testito', 'PRUEBA', 'prueb i t o'];
 
-      if(newResult.includes(newText)) {
-        resultsArray.push(allItems[i]);
-      }
-    }
+        let resultsArray = [];
+        for(let i = 0; i < allItems.length; i++) {
+          let newResult = allItems[i].toLowerCase().replace(/\s+/g, '');
+          let newText = this.state.text.toLowerCase().replace(/\s+/g, '');
 
-    const results = resultsArray.map((item) =>
-      <ListGroup.Item className="relatedItem" key={item} onClick={this.goToResult.bind(this, item)}>
-        {item}</ListGroup.Item>
-    );
-    this.setState({results: results})
+          if(newResult.includes(newText)) {
+            resultsArray.push(allItems[i]);
+          }
+        }
+
+        const results = resultsArray.map((item) =>
+          <ListGroup.Item className="relatedItem" key={item} onClick={this.goToResult.bind(this, item)}>
+            {item}</ListGroup.Item>
+        );
+        this.setState({results: results})
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   goToResult(name) {

@@ -2,8 +2,9 @@ import './details.css';
 import Related from './related';
 import { Image, Form } from 'react-bootstrap';
 
-function getDetails(name) {
-  // TODO: get details from API
+function getDetails(details) {
+  console.log(details);
+
   return {
     common_name: "Semi-collared Hawk",
     scientific_name: "Accipiter collaris",
@@ -30,7 +31,7 @@ function getDetails(name) {
 }
 
 function Animal(props) {
-  const details = getDetails(props.name);
+  const details = getDetails(props.details);
 
   return (
     <div id="main">

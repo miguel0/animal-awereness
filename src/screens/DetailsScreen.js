@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import Animal from '../components/animal';
 import Threat from '../components/threat';
@@ -13,25 +14,34 @@ export default class DetailsScreen extends React.Component {
 
     this.state = {
         type: -1,
-        name: ''
+        details: {}
     };
   }
 
   componentDidMount() {
     const parsed = queryString.parse(window.location.search);
-    this.setState({type: parsed.type, name: parsed.name});
+    const type = parsed.type;
+    // const name = parsed.name;
+
+    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+      .then(res => {
+        this.setState({type: type, details: res.data});
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
     switch(this.state.type) {
       case '0':
-        return <Animal name={this.state.name}/>;
+        return <Animal details={this.state.details}/>;
       case '1':
-        return <Threat name={this.state.name}/>;
+        return <Threat details={this.state.details}/>;
       case '2':
-        return <Habitat name={this.state.name}/>;
+        return <Habitat details={this.state.details}/>;
       case '3':
-        return <Country name={this.state.name}/>;
+        return <Country details={this.state.details}/>;
       default:
         return null;
     }

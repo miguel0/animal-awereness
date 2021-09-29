@@ -2,8 +2,9 @@ import './details.css';
 import Related from './related';
 import { Image, Form } from 'react-bootstrap';
 
-function getDetails(name) {
-  // TODO: get details from API
+function getDetails(details) {
+  console.log(details);
+  
   return {
     name: "Artificial/Aquatic - Ponds (below 8ha)",
     image: "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg",
@@ -31,7 +32,7 @@ function getDetails(name) {
 }
 
 function Habitat(props) {
-  const details = getDetails(props.name);
+  const details = getDetails(props.details);
 
   return (
     <div id="main">
