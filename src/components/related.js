@@ -1,3 +1,4 @@
+import './related.css';
 import { ListGroup } from "react-bootstrap";
 
 function goToRelatedItem(type, name) {
@@ -12,9 +13,9 @@ function Related(props) {
   );
 
   return (
-    <div>
-      <p>Related {props.type}:</p>
-      <ListGroup>{listItems}</ListGroup>
+    <div id="main">
+      <h3>Related {props.type}:</h3>
+      <ListGroup id="related">{listItems}</ListGroup>
     </div>
   );
 }
