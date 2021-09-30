@@ -21,11 +21,17 @@ export default class DetailsScreen extends React.Component {
   componentDidMount() {
     const parsed = queryString.parse(window.location.search);
     const type = parsed.type;
-    // const name = parsed.name;
+    const id = parsed.id;
+    const apis = [
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/animaldetail?id=',
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/threatdetail?id=',
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/habitatdetail?id=',
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/countrydetail?id='
+    ]
 
-    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    axios.get(apis[type] + id)
       .then(res => {
-        this.setState({type: type, details: res.data});
+        this.setState({type: type, details: res.data.item});
       })
       .catch(error => {
         console.log(error);
@@ -35,13 +41,13 @@ export default class DetailsScreen extends React.Component {
   render() {
     switch(this.state.type) {
       case '0':
-        return <Animal details={this.state.details}/>;
+        return <Animal item={this.state.details}/>;
       case '1':
-        return <Threat details={this.state.details}/>;
+        return <Threat item={this.state.details}/>;
       case '2':
-        return <Habitat details={this.state.details}/>;
+        return <Habitat item={this.state.details}/>;
       case '3':
-        return <Country details={this.state.details}/>;
+        return <Country item={this.state.details}/>;
       default:
         return null;
     }

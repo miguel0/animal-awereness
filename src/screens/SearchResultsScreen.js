@@ -30,18 +30,20 @@ export default class SearchResultsScreen extends React.Component {
   }
 
   getResults() {
-    // TODO: get list of items from API
-    console.log(this.state.type, this.state.text);
+    const apis = [
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/endangeredAnimals',
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/threats',
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/habitats',
+      'https://3nusxmqtj2.execute-api.us-east-1.amazonaws.com/countries'
+    ];
     
-    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+    axios.get(apis[this.state.type])
       .then(res => {
-        console.log(res.data);
-
-        let allItems = ['t e s t', 'testito', 'PRUEBA', 'prueb i t o'];
+        let allItems = res.data.items;
 
         let resultsArray = [];
         for(let i = 0; i < allItems.length; i++) {
-          let newResult = allItems[i].toLowerCase().replace(/\s+/g, '');
+          let newResult = allItems[i].name.toLowerCase().replace(/\s+/g, '');
           let newText = this.state.text.toLowerCase().replace(/\s+/g, '');
 
           if(newResult.includes(newText)) {
@@ -50,8 +52,8 @@ export default class SearchResultsScreen extends React.Component {
         }
 
         const results = resultsArray.map((item) =>
-          <ListGroup.Item className="relatedItem" key={item} action onClick={this.goToResult.bind(this, item)}>
-            {item}</ListGroup.Item>
+          <ListGroup.Item className="relatedItem" key={item.id} action onClick={this.goToResult.bind(this, item)}>
+            {item.name}</ListGroup.Item>
         );
         this.setState({results: results})
       })
@@ -60,8 +62,8 @@ export default class SearchResultsScreen extends React.Component {
       });
   }
 
-  goToResult(name) {
-    window.location.href = '/details?type=' + this.state.type + '&name=' + name;
+  goToResult(item) {
+    window.location.href = '/details?type=' + this.state.type + '&id=' + item.id;
   }
 
   render() {

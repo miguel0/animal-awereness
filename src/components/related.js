@@ -1,14 +1,14 @@
 import './related.css';
 import { ListGroup } from "react-bootstrap";
 
-function goToRelatedItem(type, name) {
-  window.location.href = '/details?type=' + type + '&name=' + name;
+function goToRelatedItem(type, id) {
+  window.location.href = '/details?type=' + type + '&id=' + id;
 }
 
 function Related(props) {
   const listItems = props.related.map((item) =>
-    <ListGroup.Item className="relatedItem" key={item} action onClick={goToRelatedItem.bind(this, props.type, item)}>
-      {item}</ListGroup.Item>
+    <ListGroup.Item className="relatedItem" key={item.id} action onClick={goToRelatedItem.bind(this, props.type, item.id)}>
+      {item.name}</ListGroup.Item>
   );
 
   const type = ['Animals', 'Threats', 'Habitats', 'Countries'];
